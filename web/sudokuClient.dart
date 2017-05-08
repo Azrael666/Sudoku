@@ -3,4 +3,18 @@
 
 import 'package:Sudoku/sudoku.dart';
 
-main() => new SudokuController();
+import 'dart:html';
+import 'dart:async';
+
+
+
+void main(){
+  var controller= new SudokuController();
+
+
+
+  var welcome = document.querySelector('#welcome').text ="hello world";
+  print("hello world");
+
+
+}
