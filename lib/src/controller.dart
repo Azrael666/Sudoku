@@ -7,14 +7,60 @@ class SudokuController {
 
 
 
+   var selected_field_x =0;
+   var selected_field_y = 0;
+
+   refresh_view(){
+     view.drawAll();
+   }
 
 
-  var game = new SudokuGame();
+   move_up(){
+     selected_field_y--;
+     if(selected_field_y<0)
+       selected_field_y = 0;
+
+     refresh_view();
+   }
+
+   move_down(){
+     selected_field_y++;
+     if(selected_field_y>= game.get_height())
+       selected_field_y = game.get_height()-1;
+
+     refresh_view();
+
+   }
+
+   move_left(){
+     selected_field_x --;
+     if(selected_field_x<0)
+       selected_field_x =0;
+
+     refresh_view();
+
+   }
+   move_right(){
+     selected_field_x++;
+     if(selected_field_x>= game.get_width())
+       selected_field_x = game.get_width()-1;
+
+     refresh_view();
+
+
+
+   }
+
+
+  var game = new StandardSudoku();
 
   var view = new SudokuView();
 
+
+
   SudokuController () {
-
-
+    view.set_sudoku(game);
   }
+
+  getView() => this.view;
 }

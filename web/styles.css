@@ -12,3 +12,29 @@ html, body {
 .container {
 
 }
+
+#menu{    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+
+
+
+
+    background-color: #333;
+
+}
+.menu_item{
+    float: left;
+
+    background-color: aqua;
+
+    padding: 14px 16px;
+
+}
+#sudokuGameField{
+    padding: 1cm;
+}
