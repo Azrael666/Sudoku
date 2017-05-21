@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d955fec-cff3-4e5c-a108-e7ecdf7b9fcd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/controller.dart" afterPath="$PROJECT_DIR$/lib/src/controller.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/model.dart" afterPath="$PROJECT_DIR$/lib/src/model.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/view.dart" afterPath="$PROJECT_DIR$/lib/src/view.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/styles.css" afterPath="$PROJECT_DIR$/web/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/sudokuClient.dart" afterPath="$PROJECT_DIR$/web/sudokuClient.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.pub/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,13 +59,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controller.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/controller.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="-125">
+              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding>
-                <element signature="e#0#1045#0" expanded="true" />
+                <element signature="e#0#1121#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,13 +83,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="view.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/view.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="16" />
+            <state relative-caret-position="1404">
+              <caret line="78" column="51" lean-forward="false" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
               <folding>
-                <element signature="e#0#1835#0" expanded="true" />
+                <element signature="e#0#2044#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,10 +125,10 @@
       <list>
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/styles.css" />
-        <option value="$PROJECT_DIR$/lib/src/view.dart" />
         <option value="$PROJECT_DIR$/lib/src/model.dart" />
         <option value="$PROJECT_DIR$/web/sudokuClient.dart" />
         <option value="$PROJECT_DIR$/lib/src/controller.dart" />
+        <option value="$PROJECT_DIR$/lib/src/view.dart" />
       </list>
     </option>
   </component>
@@ -342,12 +337,12 @@
       <workItem from="1494260549523" duration="2628000" />
       <workItem from="1494273504987" duration="4065000" />
       <workItem from="1494510928969" duration="1677000" />
-      <workItem from="1495381991470" duration="7016000" />
+      <workItem from="1495381991470" duration="7788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15386000" />
+    <option name="totallyTimeSpent" value="16158000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -439,7 +434,7 @@
         <state relative-caret-position="180">
           <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
-            <element signature="e#0#1045#0" expanded="true" />
+            <element signature="e#0#1121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -449,7 +444,7 @@
         <state relative-caret-position="72">
           <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
-            <element signature="e#0#1835#0" expanded="true" />
+            <element signature="e#0#2044#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -515,7 +510,7 @@
         <state relative-caret-position="270">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#0#1045#0" expanded="true" />
+            <element signature="e#0#1121#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -535,7 +530,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#1835#0" expanded="true" />
+            <element signature="e#0#2044#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -612,22 +607,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/view.dart">
+    <entry file="file://$PROJECT_DIR$/lib/src/controller.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="16" />
+        <state relative-caret-position="-125">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
-            <element signature="e#0#1835#0" expanded="true" />
+            <element signature="e#0#1121#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/controller.dart">
+    <entry file="file://$PROJECT_DIR$/lib/src/view.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="1404">
+          <caret line="78" column="51" lean-forward="false" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
           <folding>
-            <element signature="e#0#1045#0" expanded="true" />
+            <element signature="e#0#2044#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -12,6 +12,9 @@ class SudokuController {
 
    refresh_view(){
      view.drawAll();
+     view.set_x_y(selected_field_x,selected_field_y);
+     view.drawAll();
+
    }
 
 

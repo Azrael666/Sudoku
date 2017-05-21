@@ -9,6 +9,15 @@ class SudokuView {
   AbstractSudoku sudoku;
   var table;
 
+  int selected_x, selected_y;
+
+
+  set_x_y(int x, int y){
+    selected_x = x;
+    selected_y = y;
+  }
+
+
   void setTable(var htmlTable){
     this.table = htmlTable;
 
@@ -48,7 +57,7 @@ class SudokuView {
 
         for(int i1=0;i1<sudoku.get_height();i1++){
             var td = tr.insertCell(i1);
-            td.text = "${sudoku.get_value_for_field(i,i1)} $i $i1";
+            td.text = "${sudoku.get_value_for_field(i,i1)} y:$i x:$i1";
 
             td.style.width = "2cm";
             td.style.height = "2cm";
@@ -66,6 +75,9 @@ class SudokuView {
             td.style.borderTop = (top==1?"solid":"double");
 
             td.style.backgroundColor = (sudoku.get_colour_for_field(i,i1)==0?"white":"red");
+
+            if(i == selected_y && i1 == selected_x)
+              td.style.backgroundColor = "blue";
 
 
         }
