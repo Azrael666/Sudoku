@@ -5,6 +5,8 @@ library sudokulib;
 
 import 'dart:html';
 import 'dart:async';
+import 'dart:math';
+
 
 part 'src/model.dart';
 part 'src/view.dart';

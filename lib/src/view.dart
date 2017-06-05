@@ -5,7 +5,7 @@ part of sudokulib;
 
 class SudokuView {
 
-
+  SudokuController controller;
   AbstractSudoku sudoku;
   var table;
 
@@ -17,6 +17,10 @@ class SudokuView {
     selected_y = y;
   }
 
+
+  void setController(SudokuController c){
+    controller = c;
+  }
 
   void setTable(var htmlTable){
     this.table = htmlTable;
@@ -50,19 +54,22 @@ class SudokuView {
     //print("table:"+ this.table ?? "null") ;
     if( sudoku != null && table != null ){
       table.children.clear();
+     // table.style.border_collapse = "collapse";
 
 
-      for(int i=0;i<sudoku.get_width();i++){
+
+    for(int i=0;i<sudoku.get_width();i++){
         var tr = table.insertRow(i);
 
         for(int i1=0;i1<sudoku.get_height();i1++){
             var td = tr.insertCell(i1);
-            td.text = "${sudoku.get_value_for_field(i,i1)} y:$i x:$i1";
+            if (sudoku.get_value_for_field(i,i1) != 0)
+              td.text = "${sudoku.get_value_for_field(i,i1)}";// y:$i x:$i1";
+            else
+              td.text= "";
 
-            td.style.width = "2cm";
-            td.style.height = "2cm";
-            td.style.borderRight = "solid";
-            td.style.borderTop = "double";
+            if(sudoku.is_field_bold(i1, i)==1)
+              td.style.fontWeight = "bold";
 
             var left = sudoku.get_border_for_field(i,i1, 0);
             var bottom =  sudoku.get_border_for_field(i,i1, 1);
@@ -80,6 +87,9 @@ class SudokuView {
               td.style.backgroundColor = "blue";
 
 
+            td.onClick.listen((event){
+              controller.set_selected_field(i1, i);
+            });
         }
       }
 

@@ -27,6 +27,18 @@ html, body {
     background-color: #333;
 
 }
+td {
+    margin: 0px;
+    padding: 0px;
+    width: 2cm;
+    height: 2cm;
+    border: 0px;
+    font-size: 1.5cm;
+}
+table{
+    border-collapse: collapse;
+    margin: 100px;
+}
 .menu_item{
     float: left;
 
