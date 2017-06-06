@@ -12,9 +12,15 @@ void main(){
   var controller= new SudokuController();
 
 
-  var table = document.querySelector('#sudokuGameField');
+  TableElement table = document.querySelector('#sudokuGameField');
+  TableElement input_table = document.querySelector("#input_table");
+
+
+
+
 
   controller.getView().setTable(table);
+  controller.getView().set_input_table(input_table);
   controller.getView().drawAll();
 
 

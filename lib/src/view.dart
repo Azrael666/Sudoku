@@ -7,22 +7,21 @@ class SudokuView {
 
   SudokuController controller;
   AbstractSudoku sudoku;
-  var table;
+  TableElement table;
+  TableElement input_table;
 
-  int selected_x, selected_y;
 
 
-  set_x_y(int x, int y){
-    selected_x = x;
-    selected_y = y;
+  set_input_table(TableElement it){
+    input_table = it;
+    init();
   }
-
 
   void setController(SudokuController c){
     controller = c;
   }
 
-  void setTable(var htmlTable){
+  void setTable(TableElement htmlTable){
     this.table = htmlTable;
 
   }
@@ -32,11 +31,37 @@ class SudokuView {
 
   }
 
-  void setWidth(int w){
+  void init(){
+    var symbols = sudoku.get_symbols();
 
-  }
-  void setHeight(int h){
+    int cell_count =0;
+    input_table.children.clear();
 
+    TableRowElement tr = input_table.insertRow(0);
+
+    for(var s in symbols){
+      if(cell_count>=3){
+        tr = input_table.insertRow(0);
+        cell_count = 0;
+      }
+
+
+
+        TableCellElement tce = tr.insertCell(0);
+        tce.text = "$s";
+        tce.onClick.listen((event){
+          controller.set_field(s);
+        });
+
+      tce.className = "input_cell";
+      cell_count ++;
+
+    }
+    TableRowElement tr2 = input_table.insertRow(input_table.childNodes.length-1);
+    TableCellElement clear = tr2.insertCell(0);
+    clear.className = "input_cell";
+    clear.text =" erase";
+    clear.onClick.listen((e){controller.erase_selected_field();});
   }
 
 
@@ -63,13 +88,15 @@ class SudokuView {
 
         for(int i1=0;i1<sudoku.get_height();i1++){
             var td = tr.insertCell(i1);
-            if (sudoku.get_value_for_field(i,i1) != 0)
-              td.text = "${sudoku.get_value_for_field(i,i1)}";// y:$i x:$i1";
+            if (sudoku.get_value(i,i1) != 0)
+              td.text = "${sudoku.get_value(i,i1)}";// y:$i x:$i1";
             else
               td.text= "";
 
-            if(sudoku.is_field_bold(i1, i)==1)
+            if(sudoku.is_bold(i1, i)==1)
               td.style.fontWeight = "bold";
+            else
+              td.style.color = "green";
 
             var left = sudoku.get_border_for_field(i,i1, 0);
             var bottom =  sudoku.get_border_for_field(i,i1, 1);
@@ -83,12 +110,12 @@ class SudokuView {
 
             td.style.backgroundColor = (sudoku.get_colour_for_field(i,i1)==0?"white":"red");
 
-            if(i == selected_y && i1 == selected_x)
+            if(i1 == controller.get_selected_y() && i == controller.get_selected_x())
               td.style.backgroundColor = "blue";
 
 
             td.onClick.listen((event){
-              controller.set_selected_field(i1, i);
+              controller.set_selected_field(i, i1);
             });
         }
       }

@@ -3,31 +3,95 @@
 part of sudokulib;
 
 class AbstractSudoku{
-  int width;
-  int heigth;
 
-
-  int set_field_value(int x,int y,int val) =>0;
-
+  int set_field_value(int x,int y,var val) =>0;
   /*
     0   white
     1   blue
     2   red
    */
-  int get_colour_for_field(int y, int x){
-    if(x==3 && y == 7)
-      return 2;
-    return 0;
-  }
-
-
-
+  int get_colour_for_field(int y, int x) =>0;
   /*
    *    return
     *   0   solid
     *   1   double
    */
-  int get_border_for_field(int y, int x, int side){
+
+  int erase_field(int x,int y)=> -1;
+  int get_border_for_field(int y, int x, int side)=>0;
+  int is_complete() => 0;
+  int validate() => 0;
+  int get_width() =>-1;
+  int get_height() => -1;
+  int is_bold(int x,int y) => 0;
+  int get_value(int x, int y) =>0;
+  List get_symbols() => [];
+
+}
+class Nonomino extends AbstractSudoku{
+
+}
+class StandardSudoku extends AbstractSudoku{
+
+  int width;
+  int height;
+
+  List<int> fields = new List(81);
+  List<int> user_fields  = new List(81);
+
+  Random r= new Random.secure();
+
+
+  int get_field(int x, int y) {
+    int coord = y*9+x;
+    if(fields[coord]==0)
+        return user_fields[coord];
+    return fields[coord];
+  }
+
+  @override int get_width() => width;
+  @override int get_height() => height;
+
+
+  @override int get_colour_for_field(int y, int x){
+    if(x==3 && y == 7)
+      return 2;
+    return 0;
+  }
+
+  sample(){
+
+    fields = <int>[
+      1,2,3,4,5,6,7,8,9,
+      4,5,6,7,8,9,1,2,3,
+      7,8,9,1,2,3,4,5,6,
+      2,3,1,5,6,4,8,9,7,
+      5,6,4,8,9,7,2,3,1,
+      8,9,7,2,3,1,5,6,4,
+      3,1,2,6,4,5,9,7,8,
+      6,4,5,9,7,8,3,1,2,
+      9,7,8,3,1,2,6,4,5];
+
+    for(int i=0;i<81;i++){
+      user_fields[i]=0;
+    }
+
+    fields[r.nextInt(81)] = 0;
+    fields[r.nextInt(81)] = 0;
+
+
+  }
+
+  StandardSudoku(){
+    this.width = 9;
+    this.height = 9;
+    //super.width = 9;
+    //super.height = 9;
+
+    sample();
+  }
+
+  @override int get_border_for_field(int y, int x, int side){
     /*
           side
           key value
@@ -59,91 +123,34 @@ class AbstractSudoku{
     }
 
   }
-
-  int get_style_for_field(int pos){
-    return  0;
-  }
+  @override get_symbols() => [1,2,3,4,5,6,7,8,9];
 
 
-  int is_complete() => 0;
-
-  int validate() => 0;
-
-
-  int get_width(){return this.width;}
-  int get_height(){return this.heigth;}
-
-  int is_field_bold(int x,int y) => 0;
-
-  int get_value_for_field(int x, int y){return 0;}
-
-
-
-}
-class Nonomino extends AbstractSudoku{
-
-}
-class StandardSudoku extends AbstractSudoku{
-
-  List<int> fields = new List(81);
-  List<int> user_fields  = new List(81);
-
-  Random r= new Random.secure();
-
-
-  int get_field(int x, int y) {
-    int coord = y*9+x;
-    if(fields[coord]==0)
-        return user_fields[coord];
-    return fields[coord];
-  }
-
-
-  sample(){
-
-    fields = <int>[
-      1,2,3,4,5,6,7,8,9,
-      4,5,6,7,8,9,1,2,3,
-      7,8,9,1,2,3,4,5,6,
-      2,3,1,5,6,4,8,9,7,
-      5,6,4,8,9,7,2,3,1,
-      8,9,7,2,3,1,5,6,4,
-      3,1,2,6,4,5,9,7,8,
-      6,4,5,9,7,8,3,1,2,
-      9,7,8,3,1,2,6,4,5];
-
-    for(int i=0;i<81;i++){
-      user_fields[i]=0;
+  @override int set_field_value(int x,int y,var val){
+    if(!val is int){
+      print ("input for field is not an int: $val");
+      return -1;
+    }
+    else if (val<0 || val>9){
+      print("input not in range: $val");
+      return -1;
+    }
+    else if(fields[y*9+x]!=0){
+      print("this field is preset");
+      return -1;
     }
 
-    fields[r.nextInt(81)] = 0;
-    fields[r.nextInt(81)] = 0;
-
-
-  }
-
-  StandardSudoku(){
-    this.width = 9;
-    this.heigth = 9;
-    //super.width = 9;
-    //super.height = 9;
-
-    sample();
-  }
-
-  @override int set_field_value(int x,int y,int val){
+    print("setting field value x:$x y:$y, cal:$val");
     user_fields[y*9+x] = val;
   }
   @override int is_complete(){
     for(int i=0;i<81;i++)
-      if(fields[i]!=0 && user_fields[i] !=0)
-        return 1;
-    return 0;
+      if(fields[i]==0 && user_fields[i] ==0)
+        return 0;
+    return 1;
 
   }
   @override int validate(){
-
-
     // check rows and colomns
     for(int i = 0;i<9;i++) {
       int vertical = 1;
@@ -178,14 +185,16 @@ class StandardSudoku extends AbstractSudoku{
   }
 
 
-  @override int is_field_bold(int x,int y){
+  @override int erase_field(int x,int y){
+    user_fields[y*9+x] = 0;
+  }
+
+  @override int is_bold(int x,int y){
     if (fields[y*9+x]!=0)
       return 1;
     return 0;
   }
 
-  @override int get_value_for_field(int x,int y){return get_field(x, y);}
-
-
+  @override int get_value(int x,int y){return get_field(x, y);}
 
 }

@@ -12,6 +12,8 @@ class SudokuController {
   var selected_field_y = 0;
 
 
+  int get_selected_x() => selected_field_x;
+  int get_selected_y() => selected_field_y;
 
 
 
@@ -23,12 +25,21 @@ class SudokuController {
     }
 
     view.drawAll();
-    view.set_x_y(selected_field_x, selected_field_y);
-    view.drawAll();
   }
 
-  set_field_value(int val){
+
+
+  erase_selected_field(){
+    print("got erase");
+    game.erase_field(selected_field_x, selected_field_y);
+    refresh_view();
+  }
+
+  set_field(int val){
+
+    print ("got set field $val");
     game.set_field_value(selected_field_x, selected_field_y, val);
+    refresh_view();
   }
 
   set_selected_field(int x,int y){
@@ -73,5 +84,5 @@ class SudokuController {
     view.setController(this);
   }
 
-  getView() => this.view;
+  SudokuView getView() => this.view;
 }
