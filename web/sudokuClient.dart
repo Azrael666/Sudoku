@@ -16,11 +16,13 @@ void main(){
   TableElement input_table = document.querySelector("#input_table");
 
 
+  ParagraphElement header_line = document.querySelector("#header_line");
 
 
 
   controller.getView().setTable(table);
   controller.getView().set_input_table(input_table);
+  controller.getView().set_header_line(header_line);
   controller.getView().drawAll();
 
 
@@ -42,9 +44,6 @@ void main(){
 
 
 
-    document.querySelector('#welcome').text ="hello world";
-  var test_button0 = document.querySelector('#test-button0');
-  test_button0.onClick.listen((e) => document.querySelector('#welcome').text ="mars");
 
 
 

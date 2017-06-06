@@ -18,11 +18,14 @@ class SudokuController {
 
 
   refresh_view() {
+    /*
+
     if (game.validate() == 1) {
       window.alert("sucess");
     } else if(game.is_complete()==1) {
       window.alert("fail");
     }
+    */
 
     view.drawAll();
   }

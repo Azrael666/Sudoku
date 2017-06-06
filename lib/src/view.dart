@@ -9,8 +9,13 @@ class SudokuView {
   AbstractSudoku sudoku;
   TableElement table;
   TableElement input_table;
+  ParagraphElement header_line;
 
 
+
+  set_header_line(ParagraphElement p){
+    header_line  = p;
+  }
 
   set_input_table(TableElement it){
     input_table = it;
@@ -28,6 +33,25 @@ class SudokuView {
 
   void set_sudoku(AbstractSudoku s){
     this.sudoku = s;
+
+  }
+  void update_header_line(){
+    if ( header_line is! ParagraphElement)
+      return;
+
+
+    if(sudoku.validate()==1){
+      header_line.text = "sucess";
+      header_line.style.color = "green";
+    }
+    else if(sudoku.is_complete() == 0){
+      header_line.text = "not yet done";
+      header_line.style.color = "black";
+    }
+    else if(sudoku.is_complete() == 1){
+      header_line.text = "fail";
+      header_line.style.color = "red";
+    }
 
   }
 
@@ -75,6 +99,8 @@ class SudokuView {
     print("table: ${this.table ?? "null"}");
 
 
+    update_header_line();
+
 
     //print("table:"+ this.table ?? "null") ;
     if( sudoku != null && table != null ){
@@ -93,7 +119,7 @@ class SudokuView {
             else
               td.text= "";
 
-            if(sudoku.is_bold(i1, i)==1)
+            if(sudoku.is_bold(i, i1)==1)
               td.style.fontWeight = "bold";
             else
               td.style.color = "green";
@@ -108,7 +134,7 @@ class SudokuView {
             td.style.borderRight = (right==1?"solid":"double");
             td.style.borderTop = (top==1?"solid":"double");
 
-            td.style.backgroundColor = (sudoku.get_colour_for_field(i,i1)==0?"white":"red");
+           // td.style.backgroundColor = (sudoku.get_colour_for_field(i,i1)==0?"white":"red");
 
             if(i1 == controller.get_selected_y() && i == controller.get_selected_x())
               td.style.backgroundColor = "blue";
